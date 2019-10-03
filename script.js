@@ -1,5 +1,6 @@
 var canvas = document.getElementById("canvasID");
 var canvasContext = canvas.getContext("2d");
+var basketImage = document.getElementById("basketImage");
 var candyImages = [document.getElementById("hersheyImage"), document.getElementById("snickersImage"), document.getElementById("twixImage"), document.getElementById("kitkatImage"), document.getElementById("reesesImage")];
 var centerOfLane = canvas.width/20;
 var candyHeight = [0,0,0,0,0];
@@ -9,7 +10,7 @@ var candyTimer = 0;
 var time = 0;
 var candySpeed = 1;
 var candyInterval = 150;
-var playerX = 0;
+var playerX = canvas.width/20;
 var playerY = canvas.height-canvas.height/10;
 var endOfGame = false;
 var score = 0;
@@ -53,11 +54,11 @@ function keyPress(e) {
 	
 	e = e || window.event;
 	
-	if(e.keyCode == 37 && playerX != 0) {
+	if(e.keyCode == 37 && playerX != canvas.width/20) {
 		playerX -= canvas.width/5;
 		drawCanvas();
 	}
-	else if (e.keyCode == 39 && playerX != canvas.width*4/5) {
+	else if (e.keyCode == 39 && playerX != canvas.width*4/5 + canvas.width/20) {
 		playerX += canvas.width/5;
 		drawCanvas();
 	}
@@ -101,9 +102,6 @@ function drawCanvas() {
 	canvasContext.rect(4*canvas.width/5, 0, canvas.width/5, canvas.height);
 	canvasContext.fill();
 
-	canvasContext.beginPath();
-	canvasContext.fillStyle = "black";
-	canvasContext.rect(playerX, playerY, canvas.width/5, canvas.height/10);
-	canvasContext.fill();
+	canvasContext.drawImage(basketImage, playerX, playerY, canvas.width/5 - 2*canvas.width/20, canvas.height/10);
 	
 }
