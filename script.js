@@ -3,33 +3,48 @@ var canvasContext = canvas.getContext("2d");
 var basketImage = document.getElementById("basketImage");
 var candyImages = [document.getElementById("hersheyImage"), document.getElementById("snickersImage"), document.getElementById("twixImage"), document.getElementById("kitkatImage"), document.getElementById("reesesImage")];
 var centerOfLane = canvas.width/20;
+
+
+var time = 0;
+var timeRemaining = 200;
+
+var candySpeed = 1.5;
+var candyInterval = 100;
+var candyTimer = 0;
 var candyHeight = [0,0,0,0,0];
+var candyLength = canvas.height/5;
 var candyIsFalling = [false, false, false, false, false];
 var fallingNum = 0;
-var candyTimer = 0;
-var time = 0;
-var candySpeed = 1;
-var candyInterval = 150;
+
 var playerX = canvas.width/20;
 var playerY = canvas.height-canvas.height/10;
+var playerPos = 0;
+
 var endOfGame = false;
 var score = 0;
 
 document.onkeyup = keyPress;
 drawCanvas();
+setCandyToFall();
 
 
-setInterval(function(){
+setInterval(runGame,10);
+
+function runGame(){
 	if (!endOfGame) {
-		if(candyTimer % 100 == 0) {
-			console.log(time);
-			time++;
-		}
+		time++;
+		time%=100;
 		
-		if(candyTimer ==0){
+		if(time == 0) {
+			timeRemaining--;
+			document.getElementById("timer").innerText = "Time: " + timeRemaining;
+		}
+		if(candyHeight[fallingNum] >= canvas.height){
 			setCandyToFall();
-			candySpeed += 0.01;
-			candyInterval -= 1;
+			console.log(candySpeed);
+			if (candySpeed < 2){
+				candySpeed += 0.01;
+			}
 		}
 		
 		if (candyIsFalling[fallingNum]) {
@@ -37,11 +52,8 @@ setInterval(function(){
 			drawCanvas();
 			drawCandy();
 		}
-		candyTimer++;
-		candyTimer%=candyInterval;
 	}
-	
-},10);
+}
 
 function stopGame() {
 	endOfGame = true;
@@ -67,14 +79,17 @@ function keyPress(e) {
 }
 
 function setCandyToFall() {
+	
+	
 	fallingNum = Math.floor(Math.random() * 5);
 	candyIsFalling[fallingNum] = true;
 	candyHeight = [0,0,0,0,0];
 }
 
 function drawCandy() {
+
 	
-	canvasContext.drawImage(candyImages[fallingNum], centerOfLane + (fallingNum * canvas.width/5), candyHeight[fallingNum], canvas.width/10, canvas.height/5);
+	canvasContext.drawImage(candyImages[fallingNum], centerOfLane + (fallingNum * canvas.width/5), candyHeight[fallingNum], canvas.width/10, candyLength);
 }
 
 function drawCanvas() {
