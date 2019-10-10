@@ -2,29 +2,39 @@
 <html lang="en">
 
 	<head>
-		<link rel="stylesheet" type="text/css" href="style.css" />
+		<title>CandyLand</title>
+		<link rel="stylesheet" type="text/css" href="candyLand.css" />
 		<link rel="stylesheet" href="highscore.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="toggle.css">
+		<script src="jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
 
 		<h1>CandyLand</h1>
+		<div class="theme-switch-wrapper">
+			<label class="theme-switch visibility" for="checkbox">
+				<input type="checkbox" id="checkbox" />
+				<div class="slider round"></div>
+			</label>
+			<em>Enable Dark Mode!</em>
+		</div>
 		<div id="score-header">
 			<h2 style="float: left;" id="score">Current Score: 0</h2>
+			<h2 style="float: right;" id="lives">Lives: </h2>
 			<h2 style="float: right;" id="timer">Time: </h2>
 		</div>
 		
-		<img id="hersheyImage" style="display: none" src="images/hershey.png"></img>
-		<img id="snickersImage" style="display: none" src="images/snickers.png"></img>
-		<img id="twixImage" style="display: none" src="images/twix.png"></img>
-		<img id="kitkatImage" style="display: none" src="images/kitkat.png"></img>
-		<img id="reesesImage" style="display: none" src="images/reeses.png"></img>
-		<img id="basketImage" style="display: none" src="images/basket.png"></img>
+		<img id="hersheyImage" style="display: none" src="images/hershey.png"/>
+		<img id="snickersImage" style="display: none" src="images/snickers.png"/>
+		<img id="twixImage" style="display: none" src="images/twix.png"/>
+		<img id="kitkatImage" style="display: none" src="images/kitkat.png"/>
+		<img id="reesesImage" style="display: none" src="images/reeses.png"/>
+		<img id="basketImage" style="display: none" src="images/basket.png"/>
 		<canvas id="canvasID" onload="update_scores()" >
 			
 			
 		</canvas>
-		
+		<br />
 		<div id="highdiv">
 			<table id="hightable">
 				<tr>
@@ -45,9 +55,10 @@
 				</tr>
 			</table>
 		</div>
-
+		
+		
+		<script src="HighscoreAPI.js"></script>
+		<script src="candyLand.js"></script>
 	</body>
-
-	<script type="text/javascript" src="HighscoreAPI.js"></script>
-	<script type="text/javascript" src="script.js"></script>
+	
 </html>
