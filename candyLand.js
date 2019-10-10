@@ -22,6 +22,7 @@ var playerPos = 0;
 
 var endOfGame = false;
 var score = 0;
+var scoring = false;
 
 document.onkeyup = keyPress;
 drawCanvas();
@@ -45,6 +46,13 @@ function runGame(){
 			}
 			
 		}
+		
+		if (candyHeight[fallingNum] + candyLength >= canvas.height - canvas.height/10 && candyHeight[fallingNum] + candyLength < canvas.height && playerPos == fallingNum) {
+			score++;
+			document.getElementById("score").innerText = "Current Score: " + score;
+			setCandyToFall();
+		}
+		
 		if(candyHeight[fallingNum] >= canvas.height){
 			setCandyToFall();
 			console.log(candySpeed);
@@ -58,9 +66,6 @@ function runGame(){
 			drawCanvas();
 			drawCandy();
 		}
-	}
-	else{
-		
 	}
 }
 
@@ -76,14 +81,30 @@ function keyPress(e) {
 	
 	e = e || window.event;
 	
-	if(e.keyCode == 37 && playerX != canvas.width/20) {
-		playerX -= canvas.width/5;
-		playerPos--;
+	if(e.keyCode == 37) {
+		
+		if (playerX == canvas.width/20) {
+			playerX = canvas.width*4/5 + canvas.width/20
+			playerPos = 4;
+		}
+		else {
+			playerX -= canvas.width/5;
+			playerPos--;
+		}
+		
 		drawCanvas();
 	}
-	else if (e.keyCode == 39 && playerX != canvas.width*4/5 + canvas.width/20) {
-		playerX += canvas.width/5;
-		playerPos++;
+	else if (e.keyCode == 39) {
+		
+		if (playerX == canvas.width*4/5 + canvas.width/20) {
+			playerX = canvas.width/20
+			playerPos = 0;
+		}
+		else {
+			playerX += canvas.width/5;
+			playerPos++;
+		}
+		
 		drawCanvas();
 	}
 	console.log(playerPos);
