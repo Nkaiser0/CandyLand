@@ -26,3 +26,21 @@
     margin-top: 16px;
     border: 2px black solid;
 }
+#begin{
+    background-color:green;
+    color:white;
+    width:50px;
+    height:50px;
+    border-radius:25px;
+    border-color:green;
+}
+
+#stop{
+    background-color:red;
+    color:white;
+    width:50px;
+    height:50px;
+    border-radius:25px;
+    border-color:red;
+}
+}

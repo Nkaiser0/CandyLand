@@ -2,7 +2,7 @@ var competition_id = queryData('competition_id');
 var game_id = queryData('game_id');
 
 var current_player_score = null;
-
+$("stop").click(stopGame());
 function update_scores() {
     $.ajax({
         method: "GET",

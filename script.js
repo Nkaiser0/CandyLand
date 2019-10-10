@@ -28,9 +28,13 @@ drawCanvas();
 setCandyToFall();
 document.getElementById("timer").innerText = "Time: " + timeRemaining;
 
+$("#begin").click(function(){
+	setInterval(runGame,10);
 
-setInterval(runGame,10);
-
+})
+$("#stop").click(function(){
+	stopGame();
+})
 function runGame(){
 	if (!endOfGame) {
 		time++;
