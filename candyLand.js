@@ -16,9 +16,10 @@ var candyLength = canvas.height/5;
 var candyIsFalling = [false, false, false, false, false];
 var fallingNum = 0;
 
-var playerX = canvas.width/20;
+var playerX = canvas.width/20 + 2*canvas.width/5;
 var playerY = canvas.height-canvas.height/10;
-var playerPos = 0;
+var playerPos = 2;
+var livesRemaining = 10;
 
 var endOfGame = false;
 var score = 0;
@@ -41,6 +42,7 @@ toggleSwitch.addEventListener('change', switchTheme, false);
 document.onkeyup = keyPress;
 drawCanvas();
 setCandyToFall();
+document.getElementById("lives").innerText = "Lives: " + livesRemaining;
 document.getElementById("timer").innerText = "Time: " + timeRemaining;
 
 
@@ -65,14 +67,12 @@ function runGame(){
 			score++;
 			document.getElementById("score").innerText = "Current Score: " + score;
 			setCandyToFall();
+			
 		}
 		
 		if(candyHeight[fallingNum] >= canvas.height){
 			setCandyToFall();
-			console.log(candySpeed);
-			if (candySpeed < 2){
-				candySpeed += 0.01;
-			}
+			takeLife();
 		}
 		
 		if (candyIsFalling[fallingNum]) {
@@ -89,44 +89,57 @@ function stopGame() {
 	highscore(score);
 }
 
+function takeLife() {
+	livesRemaining--;
+	document.getElementById("lives").innerText = "Lives: " + livesRemaining;
+	
+	if (livesRemaining == 0) {
+		stopGame();
+	}
+}
 
 
 function keyPress(e) {
 	
 	e = e || window.event;
 	
-	if(e.keyCode == 37) {
+	if (!endOfGame) {
+		if(e.keyCode == 37) {
 		
-		if (playerX == canvas.width/20) {
-			playerX = canvas.width*4/5 + canvas.width/20
-			playerPos = 4;
+			if (playerX == canvas.width/20) {
+				playerX = canvas.width*4/5 + canvas.width/20
+				playerPos = 4;
+			}
+			else {
+				playerX -= canvas.width/5;
+				playerPos--;
+			}
+			
+			drawCanvas();
 		}
-		else {
-			playerX -= canvas.width/5;
-			playerPos--;
+		else if (e.keyCode == 39) {
+			
+			if (playerX == canvas.width*4/5 + canvas.width/20) {
+				playerX = canvas.width/20
+				playerPos = 0;
+			}
+			else {
+				playerX += canvas.width/5;
+				playerPos++;
+			}
+			
+			drawCanvas();
 		}
-		
-		drawCanvas();
+		console.log(playerPos);
 	}
-	else if (e.keyCode == 39) {
-		
-		if (playerX == canvas.width*4/5 + canvas.width/20) {
-			playerX = canvas.width/20
-			playerPos = 0;
-		}
-		else {
-			playerX += canvas.width/5;
-			playerPos++;
-		}
-		
-		drawCanvas();
-	}
-	console.log(playerPos);
 	
 }
 
 function setCandyToFall() {
 	
+	if (candySpeed < 2){
+		candySpeed += 0.01;
+	}
 	
 	fallingNum = Math.floor(Math.random() * 5);
 	candyIsFalling[fallingNum] = true;
