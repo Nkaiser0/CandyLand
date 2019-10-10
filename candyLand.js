@@ -139,28 +139,44 @@ function drawCandy() {
 }
 
 function drawCanvas() {
+	var grd = canvasContext.createLinearGradient(0,0,canvas.width/5,0);
+	grd.addColorStop(0, "#ff817a");
+	grd.addColorStop(1, "#b5ff7a");
 	canvasContext.beginPath();
-	canvasContext.fillStyle = "#ff817a";
+	canvasContext.fillStyle = grd;
 	canvasContext.rect(0, 0, canvas.width/5, canvas.height);
 	canvasContext.fill();
 
+	var grd2 = canvasContext.createLinearGradient(canvas.width/5,0,2*canvas.width/5,0);
+	grd2.addColorStop(0, "#b5ff7a");
+	grd2.addColorStop(1, "#7af8ff");
 	canvasContext.beginPath();
-	canvasContext.fillStyle = "#b5ff7a";
+	canvasContext.fillStyle = grd2;
 	canvasContext.rect(canvas.width/5, 0, canvas.width/5, canvas.height);
 	canvasContext.fill();
 
+	var grd3 = canvasContext.createLinearGradient(2*canvas.width/5,0,3*canvas.width/5,0);
+	grd3.addColorStop(0, "#7af8ff");
+	grd3.addColorStop(1, "yellow");
 	canvasContext.beginPath();
-	canvasContext.fillStyle = "#7af8ff";
+	canvasContext.fillStyle = grd3;
 	canvasContext.rect(2*canvas.width/5, 0, canvas.width/5, canvas.height);
 	canvasContext.fill();
 
+
+	var grd4 = canvasContext.createLinearGradient(3*canvas.width/5,0,4*canvas.width/5,0);
+	grd4.addColorStop(0, "yellow");
+	grd4.addColorStop(1, "#c37aff");
 	canvasContext.beginPath();
-	canvasContext.fillStyle = "yellow";
+	canvasContext.fillStyle = grd4;
 	canvasContext.rect(3*canvas.width/5, 0, canvas.width/5, canvas.height);
 	canvasContext.fill();
 
+	var grd5 = canvasContext.createLinearGradient(4*canvas.width/5,0,canvas.width,0);
+	grd5.addColorStop(0, "#c37aff");
+	grd5.addColorStop(1, "#b6ff7a");
 	canvasContext.beginPath();
-	canvasContext.fillStyle = "#c37aff";
+	canvasContext.fillStyle = grd5;
 	canvasContext.rect(4*canvas.width/5, 0, canvas.width/5, canvas.height);
 	canvasContext.fill();
 
