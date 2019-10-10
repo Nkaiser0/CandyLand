@@ -46,6 +46,7 @@ setInterval(function(){
 function stopGame() {
 	endOfGame = true;
 	alert("End of Game, you got a score of " + score);
+	highscore(score);
 }
 
 

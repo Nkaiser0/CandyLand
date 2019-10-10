@@ -3,21 +3,47 @@
 
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" href="highscore.css">
 	</head>
 	<body>
+
+		<h1>CandyLand</h1>
+		<div id="score-header">
+				<h2 style="float: left;">Current Score: </h2>
+				<h2 style="float: right;">Lives Remaining: </h2>
+		</div>
+		
 		<img id="hersheyImage" style="display: none" src="images/hershey.png"></img>
 		<img id="snickersImage" style="display: none" src="images/snickers.png"></img>
 		<img id="twixImage" style="display: none" src="images/twix.jpg"></img>
 		<img id="kitkatImage" style="display: none" src="images/kitkat.jpg"></img>
 		<img id="reesesImage" style="display: none" src="images/reeses.jpeg"></img>
 		<img id="basketImage" style="display: none" src="images/basket.png"></img>
-		<canvas id="canvasID" >
+		<canvas id="canvasID" onload="update_scores()" >
 			
 			
 		</canvas>
+		
+		<div id="highdiv">
+			<table id="hightable">
+				<tr>
+					<th>User</th>
+					<th>Score</th>
+				</tr>
+
+			</table>
+			<table id="myhightable">
+				<tr>
+					<th colspan="2">Your High Score</th>
+				</tr>
+				<tr id="myhighscore">
+					<td colspan="2">You don't have one yet!</td>
+				</tr>
+			</table>
+		</div>
 
 	</body>
 
-
+	<script type="text/javascript" src="HighscoreAPI.js"></script>
 	<script type="text/javascript" src="script.js"></script>
 </html>

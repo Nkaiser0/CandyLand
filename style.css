@@ -5,3 +5,25 @@ canvas {
 	margin: auto;
 	display: block;
 }
+
+body {
+	background-image: url("images/colorful-background-1.jpg");
+}
+
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 70px;
+	color: #f3f57f;
+	text-align: center;
+	text-shadow: 4px 4px #000000;
+}
+
+h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	background-color: #90ee90;
+	color: black;
+	border:2px solid black;
+	border-radius: 25px;
+	padding: 10px;
+}
