@@ -106,17 +106,17 @@ function drawCandy() {
 
 function drawCanvas() {
 	canvasContext.beginPath();
-	canvasContext.fillStyle = "red";
+	canvasContext.fillStyle = "#ff817a";
 	canvasContext.rect(0, 0, canvas.width/5, canvas.height);
 	canvasContext.fill();
 
 	canvasContext.beginPath();
-	canvasContext.fillStyle = "green";
+	canvasContext.fillStyle = "#b5ff7a";
 	canvasContext.rect(canvas.width/5, 0, canvas.width/5, canvas.height);
 	canvasContext.fill();
 
 	canvasContext.beginPath();
-	canvasContext.fillStyle = "blue";
+	canvasContext.fillStyle = "#7af8ff";
 	canvasContext.rect(2*canvas.width/5, 0, canvas.width/5, canvas.height);
 	canvasContext.fill();
 
@@ -126,7 +126,7 @@ function drawCanvas() {
 	canvasContext.fill();
 
 	canvasContext.beginPath();
-	canvasContext.fillStyle = "purple";
+	canvasContext.fillStyle = "#c37aff";
 	canvasContext.rect(4*canvas.width/5, 0, canvas.width/5, canvas.height);
 	canvasContext.fill();
 
