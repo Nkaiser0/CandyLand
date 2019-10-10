@@ -4,11 +4,19 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="candyLand.css" />
 		<link rel="stylesheet" href="highscore.css">
+		<link rel="stylesheet" href="toggle.css">
 		<script src="jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
 
 		<h1>CandyLand</h1>
+		<div class="theme-switch-wrapper">
+			<label class="theme-switch visibility" for="checkbox">
+				<input type="checkbox" id="checkbox" />
+				<div class="slider round"></div>
+			</label>
+			<em>Enable Dark Mode!</em>
+		</div>
 		<div id="score-header">
 			<h2 style="float: left;" id="score">Current Score: 0</h2>
 			<h2 style="float: right;" id="timer">Time: </h2>

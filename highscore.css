@@ -1,4 +1,14 @@
 
+:root {
+    --box-color: #9090EE;
+    --border-color: black;
+}
+
+[data-theme="dark"] {
+
+    --box-color: #dede26;
+    --border-color: white;
+}
 #hightable,#myhightable{
     width:50%;
     margin:auto;
@@ -18,13 +28,14 @@
 }
 
 #highdiv{
-    background-color: #9090EE;
+    background-color: var(--box-color);
     width:50%;
     margin:auto;
     border-radius: 16px;
     padding:8px;
     margin-top: 16px;
-    border: 2px black solid;
+    border: 2px var(--border-color) solid;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+    color: var(--border-color);
 }
