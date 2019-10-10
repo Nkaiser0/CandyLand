@@ -25,6 +25,7 @@ var score = 0;
 
 document.onkeyup = keyPress;
 drawCanvas();
+setCandyToFall();
 
 
 setInterval(runGame,10);
@@ -38,14 +39,12 @@ function runGame(){
 			timeRemaining--;
 			document.getElementById("timer").innerText = "Time: " + timeRemaining;
 		}
-		
-		if(candyTimer == 0){
+		if(candyHeight[fallingNum] >= canvas.height){
 			setCandyToFall();
-			candySpeed += 0.01;
-			if(candyInterval > 50) {
-				candyInterval -= 1;
+			console.log(candySpeed);
+			if (candySpeed < 2){
+				candySpeed += 0.01;
 			}
-			
 		}
 		
 		if (candyIsFalling[fallingNum]) {
@@ -53,8 +52,6 @@ function runGame(){
 			drawCanvas();
 			drawCandy();
 		}
-		candyTimer++;
-		candyTimer%=candyInterval;
 	}
 }
 
