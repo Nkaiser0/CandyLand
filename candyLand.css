@@ -46,3 +46,50 @@ h2 {
 	border-radius: 25px;
 	padding: 10px;
 }
+.whole{
+    width:600px;
+    height:400px;
+    position: absolute;
+    top:25%;
+    left:25%;
+    z-index: 1;
+    text-align: center;
+    color:yellow;
+    font-size:40px;
+    font-weight:bold;
+    display:flex;
+    display:none;
+}
+.whole p{
+    margin-top:100px;
+}
+.part1{
+    flex-basis: 25%;
+    background-color:purple;
+}
+.part2{
+    flex-basis: 25%;
+    background-color:black;
+}
+.part3{
+    flex-basis: 25%;
+    background-color:blue;
+}
+.part4{
+    flex-basis: 25%;
+    background-color:red;
+}
+aside{
+    text-align: center;
+}
+label{
+    color:green;
+}
+.love{
+    color:red;
+}
+.need2{
+    color:red;
+    display:none;
+}
+

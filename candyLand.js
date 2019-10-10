@@ -44,13 +44,31 @@ drawCanvas();
 setCandyToFall();
 document.getElementById("lives").innerText = "Lives: " + livesRemaining;
 document.getElementById("timer").innerText = "Time: " + timeRemaining;
-
+var myInterval;
 $("#begin").click(function(){
-	setInterval(runGame,10);
+	time = 0;
+    timeRemaining = 200;
+	
+    candySpeed = 1.5;
+    candyInterval = 100;
+    candyTimer = 0;
+	
+	 livesRemaining = 10;
+	 candyHeight = [0,0,0,0,0];
+	
+	 endOfGame = false;
+	 score = 0;
+	 scoring = false;
+	score=0;
+	document.getElementById("lives").innerText = "Lives: " + livesRemaining;
+	document.getElementById("score").innerText = "Current Score: " + score;
+	document.getElementById("timer").innerText = "Time: " + timeRemaining;
 
+	myInterval=setInterval(runGame,10);
 })
 $("#stop").click(function(){
 	stopGame();
+	
 })
 function runGame(){
 	if (!endOfGame) {
@@ -89,7 +107,13 @@ function runGame(){
 
 function stopGame() {
 	endOfGame = true;
-	alert("End of Game, you got a score of " + score);
+	clearInterval(myInterval);
+	 $(".part1").slideDown();
+         $(".part3").slideDown();
+         $(".part2").fadeIn();
+         $(".part4").fadeIn();
+         $(".whole").css("display","flex");
+
 	highscore(score);
 }
 
@@ -140,7 +164,7 @@ function keyPress(e) {
 }
 
 function setCandyToFall() {
-	
+	candyIsFalling = [false, false, false, false, false];
 	if (candySpeed < 2){
 		candySpeed += 0.01;
 	}
@@ -201,3 +225,11 @@ function drawCanvas() {
 	canvasContext.drawImage(basketImage, playerX, playerY, canvas.width/5 - canvas.width/10, canvas.height/10);
 	
 }
+$(".whole").dblclick(function(){
+    $(".part1").slideUp(3000);
+    $(".part3").slideUp(3000);
+    $(".part2").fadeOut(3000);
+    $(".part4").fadeOut(3000,function(){
+      $('.whole').css("display","none");
+    });
+})
