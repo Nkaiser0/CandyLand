@@ -26,6 +26,7 @@ var score = 0;
 document.onkeyup = keyPress;
 drawCanvas();
 setCandyToFall();
+document.getElementById("timer").innerText = "Time: " + timeRemaining;
 
 
 setInterval(runGame,10);
@@ -38,6 +39,11 @@ function runGame(){
 		if(time == 0) {
 			timeRemaining--;
 			document.getElementById("timer").innerText = "Time: " + timeRemaining;
+			
+			if (timeRemaining == 0) {
+				stopGame();
+			}
+			
 		}
 		if(candyHeight[fallingNum] >= canvas.height){
 			setCandyToFall();
@@ -52,6 +58,9 @@ function runGame(){
 			drawCanvas();
 			drawCandy();
 		}
+	}
+	else{
+		
 	}
 }
 
@@ -69,12 +78,15 @@ function keyPress(e) {
 	
 	if(e.keyCode == 37 && playerX != canvas.width/20) {
 		playerX -= canvas.width/5;
+		playerPos--;
 		drawCanvas();
 	}
 	else if (e.keyCode == 39 && playerX != canvas.width*4/5 + canvas.width/20) {
 		playerX += canvas.width/5;
+		playerPos++;
 		drawCanvas();
 	}
+	console.log(playerPos);
 	
 }
 
@@ -118,6 +130,6 @@ function drawCanvas() {
 	canvasContext.rect(4*canvas.width/5, 0, canvas.width/5, canvas.height);
 	canvasContext.fill();
 
-	canvasContext.drawImage(basketImage, playerX, playerY, canvas.width/5 - 2*canvas.width/20, canvas.height/10);
+	canvasContext.drawImage(basketImage, playerX, playerY, canvas.width/5 - canvas.width/10, canvas.height/10);
 	
 }
